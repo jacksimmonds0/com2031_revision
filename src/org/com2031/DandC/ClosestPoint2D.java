@@ -19,15 +19,27 @@ public class ClosestPoint2D {
     List<Point> leftList = null;
     List<Point> rightList = null;
     
-    // base case
+    // base cases
     // when there are only two points in the list
     if(currentPoints.size() == 2) {
       return this.euclideanDistance(currentPoints.get(0), currentPoints.get(1));
     }
+    // or if the there is only one point in the list
+    else if(currentPoints.size() == 1) {
+      // return positive infinity so the other side of the list distance will always be smaller
+      return Double.POSITIVE_INFINITY;
+    }
     
-    halfSize = currentPoints.size() / 2;
-    // define where the separation line is based on the current points list
-    sepLine = (currentPoints.get(halfSize).getX() + currentPoints.get(halfSize-1).getX()) / 2;
+    // split the list differently based on whether the list has an even no of elements or not
+    if(currentPoints.size() % 2 == 0) {
+      halfSize = currentPoints.size() / 2;
+      // define where the separation line is based on the current points list
+      sepLine = (currentPoints.get(halfSize).getX() + currentPoints.get(halfSize-1).getX()) / 2;      
+    }
+    else {
+      halfSize = (currentPoints.size() - 1) / 2;
+      sepLine = (currentPoints.get(halfSize).getX() + currentPoints.get(halfSize+1).getX()) / 2;
+    }
     
     leftList = new ArrayList<Point>(currentPoints.subList(0, halfSize));
     rightList = new ArrayList<Point>(currentPoints.subList(halfSize, currentPoints.size()));
