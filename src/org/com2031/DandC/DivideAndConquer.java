@@ -3,6 +3,8 @@ package org.com2031.DandC;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 
 public class DivideAndConquer {
 
@@ -13,6 +15,27 @@ public class DivideAndConquer {
     testMinDistance2D();
     System.out.println("\n");
     
+    System.out.println("Merge sort");
+    System.out.println("Sorting algorithm by splitting the list in two recursively and sorting each list by merging");
+    System.out.println("Time complexity: O(n log2(n))\n");
+    testMergesort();
+    System.out.println("\n");
+  }
+  
+  public static void testMergesort() {
+    Mergesort mergesort = new Mergesort();
+    List<Integer> list = new ArrayList<Integer>();
+
+    // add random integers to the list
+    int min = 0;
+    int max = 20;
+    for(int i  = 0 ; i < max; i++) {
+      int randomNum = min + (int)(Math.random() * ((max - min) + 1));
+      list.add(randomNum);
+    }
+    
+    System.out.println("Unsorted list: " + list);
+    System.out.println("Sorted list: " + mergesort.mergesort(list));
   }
 
   public static void testMinDistance2D() {
