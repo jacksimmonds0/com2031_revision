@@ -2,9 +2,8 @@ package org.com2031.DandC;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-
 
 public class DivideAndConquer {
 
@@ -20,6 +19,21 @@ public class DivideAndConquer {
     System.out.println("Time complexity: O(n log2(n))\n");
     testMergesort();
     System.out.println("\n");
+    
+    System.out.println("Counting Inversions");
+    System.out.println("An alogithm to count the number of inversions performed in a list to sort using merge sort");
+    System.out.println("Time complexity: O(n log2(n))\n");
+    testCountingInversions();
+  }
+  
+  public static void testCountingInversions() {
+    CountingInversions count = new CountingInversions();
+    List<Integer> list = new ArrayList<Integer>();
+
+    list.addAll(Arrays.asList(1,5,4,8,10,2,6,9,12,11,3,7));
+  
+    System.out.println("Unsorted list: " + list);
+    System.out.println("No of inversions: " + count.countInversions(list));   
   }
   
   public static void testMergesort() {
