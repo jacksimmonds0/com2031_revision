@@ -13,6 +13,38 @@ public class GreedyAlgorithms {
     testIntervalScheduling();
     System.out.println("\n");
     
+    System.out.println("Interval Partioning");
+    System.out.println("Assinging a schedule to the minimum no of rooms possible, including all jobs input across the rooms");
+    System.out.println("Time complexity: O(n log(n))\n");
+    testIntervalPartioning();
+    System.out.println("\n");
+    
+  }
+  
+  public static void testIntervalPartioning() {
+    IntervalPartioning ip = new IntervalPartioning();
+    
+    Job a = new Job(9,10);
+    Job b = new Job(9,12);
+    Job c = new Job(9,10);
+    Job d = new Job(11,13);
+    Job e = new Job(11,15);
+    Job f = new Job(14,15);
+    Job g = new Job(14,15);
+    Job h = new Job(15,17);
+    Job i = new Job(16,18);
+    Job j = new Job(16,18);
+    
+    List<Job> jobs = new ArrayList<Job>(Arrays.asList(a,b,c,d,e,f,g,h,i,j));
+    
+    Object[] rooms = ip.partition(jobs).toArray(); 
+    
+    System.out.println("Input jobs: " + jobs);
+    
+    System.out.println("Partioned rooms schedules:");
+    for(int z = 0; z < rooms.length; z++) {
+      System.out.println(rooms[z]);
+    }
   }
   
   public static void testIntervalScheduling() {
@@ -31,6 +63,6 @@ public class GreedyAlgorithms {
     
     IntervalScheduling is = new IntervalScheduling();
     
-    System.out.println("Scheduled jobs: " + is.intervalScheduling(jobs));
+    System.out.println("Scheduled jobs: " + is.schedule(jobs));
   }
 }

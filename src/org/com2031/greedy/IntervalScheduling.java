@@ -11,7 +11,7 @@ public class IntervalScheduling {
     super();
   }
   
-  public List<Job> intervalScheduling(List<Job> jobs) {
+  public List<Job> schedule(List<Job> jobs) {
     // sort all the jobs in order of end time
     jobs = this.sortByEndTime(jobs);
     List<Job> schedule = new ArrayList<Job>();
