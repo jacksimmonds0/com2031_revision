@@ -19,6 +19,29 @@ public class GreedyAlgorithms {
     testIntervalPartioning();
     System.out.println("\n");
     
+    System.out.println("Minimizing Lateness");
+    System.out.println("Determining the interval schedule to minimize the lateness given a list of tasks taking duration/time t and for deadline d");
+    System.out.println("Time complexity: O(n log(n))\n");
+    testMinimizingLateness();
+    
+  }
+  
+  public static void testMinimizingLateness() {
+    MinimizingLateness ml = new MinimizingLateness();
+    
+    Task a = new Task(1,9);
+    Task b = new Task(3,14);
+    Task c = new Task(3,6);
+    Task d = new Task(2,8);
+    Task e = new Task(2,15);
+    Task f = new Task(4,9);
+    
+    List<Task> tasks = new ArrayList<Task>(Arrays.asList(a,b,c,d,e,f));
+    
+    System.out.println("Input tasks: " + tasks);
+    System.out.println("Intervals result: " + ml.planIntervals(tasks));
+    System.out.println("Lateness: " + ml.getLateness());
+    
   }
   
   public static void testIntervalPartioning() {
