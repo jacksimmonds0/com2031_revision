@@ -21,7 +21,7 @@ public class DivideAndConquer {
     System.out.println("\n");
     
     System.out.println("Counting Inversions");
-    System.out.println("An alogithm to count the number of inversions performed in a list to sort using merge sort");
+    System.out.println("An algorithm to count the number of inversions performed in a list to sort using merge sort");
     System.out.println("Time complexity: O(n log2(n))\n");
     testCountingInversions();
   }
@@ -63,18 +63,9 @@ public class DivideAndConquer {
     Point p8 = new Point(-9,-6);
     Point p9 = new Point(-10,-5);
     
-    List<Point> points = new ArrayList<Point>();
-    points.add(p1);
-    points.add(p2);
-    points.add(p3);
-    points.add(p4);
-    points.add(p5);
-    points.add(p6);
-    points.add(p7);
-    points.add(p8);
-    points.add(p9);
+    List<Point> points = new ArrayList<Point>(Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9));
     
-    ClosestPoint2D algorithm = new ClosestPoint2D();
+    ClosestPoint2D cp2D = new ClosestPoint2D();
     
     DecimalFormat df = new DecimalFormat("0.00");
     
@@ -82,9 +73,9 @@ public class DivideAndConquer {
     System.out.println("No of points: " + points.size());
     
     // initially sort the points by x co-ordinate before performing the algorithm
-    points = algorithm.sortByXCoordinate(points);
+    points = cp2D.sortByXCoordinate(points);
     System.out.println("The minimum distance within the set of points is: " + 
-        df.format(algorithm.minDistance(points)));
+        df.format(cp2D.minDistance(points)));
   }
   
 }

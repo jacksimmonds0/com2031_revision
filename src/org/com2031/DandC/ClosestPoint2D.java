@@ -61,22 +61,54 @@ public class ClosestPoint2D {
       return currentMin;
     }
     else {
-      // loop through points and compare the adjacent points distances after sorted by Y
-      // return the min between that and the current min
-      return Math.min(currentMin, this.minFromList(currentPoints));
+      // scan the 10 nearest points for each point in the list
+      // return the min between that and the current minimum distance
+      return Math.min(currentMin, this.scan10NearestPoints(currentPoints));
     }
     
   }
   
-  public double minFromList(List<Point> points) {
+  public double scan10NearestPoints(List<Point> points) {
     double min = 0;
-    for(int i = 0; i < points.size() - 1; i++) {
-      double dist = this.euclideanDistance(points.get(i), points.get(i + 1));
-      if(i == 0) {
-        min = dist;
+    
+    // keeps running time of this step to O(10n) 
+    // ... would be O(n^2) if comparing all points with each other in the list
+    for(int i = 0; i < points.size(); i++) {
+      Point p1 = points.get(i);
+      int j = 0;
+      int k = 0;
+      double dist = 0.0;
+      
+      // if there are less than 10 points all will be scanned
+      if(points.size() < 10) {
+        k = points.size();
       }
-      else if(dist < min) {
-        min = dist;
+      // if before the 6th point - the point gets compared with the first 10 in the list
+      else if(i < 6) {
+        k = 11;
+      }
+      // otherwise the point must be compared with the 5 before it - and the 5 after it
+      else {
+        j = i - 5;
+        k = i + 6;
+      }
+      
+      for(int l = j; l < k; l++) {
+        if(points.get(l).equals(p1)) {
+          // do nothing - the points are the same
+        }
+        else {
+          // calculate the euclidean distance and compare with the current min
+          dist = this.euclideanDistance(p1, points.get(l));
+          if(i == 0 && l == 1) {
+            // at first instance assign the distance to the minimum so comparison works correctly
+            min = dist;
+          }
+          else if(min > dist) {
+            // if distance calculated is less, assign as the new minimum
+            min = dist;
+          }
+        }
       }
     }
     return min;
@@ -88,6 +120,7 @@ public class ClosestPoint2D {
     
     while(it.hasNext()) {
       Point pt = it.next();
+      // checking if the point in the list is outside the range of separation line + distance either side
       if(pt.getX() > sepLine + distance || pt.getX() < sepLine - distance) {
         it.remove();
       }
