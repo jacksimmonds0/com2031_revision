@@ -13,6 +13,23 @@ public class DynamicProgramming {
     testKnapsack();
     System.out.println("\n");
     
+    System.out.println("Sequence Alignment");
+    System.out.println("Finding the minumum cost of aligning two strings to be the same with gap penalty δ and mismatch penalty α");
+    System.out.println("Time complexity: O(mn)\n");
+    testSequenceAlignment();           
+    System.out.println("\n");
+    
+  }
+  
+  public static void testSequenceAlignment() {
+    String x = "CTACCG";
+    String y = "TACATG";
+    SequenceAlignment sa = new SequenceAlignment(x, y);
+    
+    int result = sa.sequenceAlignment(2, 1);
+    
+    sa.printTable();
+    System.out.println("\nThe minimum cost of aligning " + x + " and " + y + " is: " + result);
   }
   
   public static void testKnapsack() {
