@@ -17,6 +17,6 @@ public class WeightedJob extends Job {
   
   @Override
   public String toString() {
-    return "(" + super.startTime + " -> " + super.endTime + ", w  = " + this.weight +")";
+    return "(" + super.startTime + " -> " + super.endTime + ", w = " + this.weight +")";
   }
 }

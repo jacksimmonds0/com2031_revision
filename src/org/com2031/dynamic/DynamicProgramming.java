@@ -7,6 +7,10 @@ import java.util.ArrayList;
 public class DynamicProgramming {
 
   public static void main(String[] args) {
+    System.out.println("-------------------");
+    System.out.println("Dynamic Programming");
+    System.out.println("-------------------\n");
+    
     System.out.println("Knapsack Problem");
     System.out.println("Picking the optimal items i to fill the knapsack so that the weight w <= weight limit W for the max total value v");
     System.out.println("Time complexity: O(nW) - pseudo-polynomial\n");
@@ -18,6 +22,38 @@ public class DynamicProgramming {
     System.out.println("Time complexity: O(mn)\n");
     testSequenceAlignment();           
     System.out.println("\n");
+    
+    System.out.println("Weighted Interval Scheduling");
+    System.out.println("Computing the optimal interval schedule for maximum total weight");
+    System.out.println("Time complexity: O(n log(n))\n");
+    testWeightedIntervalScheduling();
+    System.out.println("\n");      
+  }
+  
+  public static void testWeightedIntervalScheduling() {
+    WeightedJob j1 = new WeightedJob(1,3,2);
+    WeightedJob j2 = new WeightedJob(0,4,5);
+    WeightedJob j3 = new WeightedJob(3,5,4);
+    WeightedJob j4 = new WeightedJob(5,7,2);
+    WeightedJob j5 = new WeightedJob(7,9,3);
+    WeightedJob j6 = new WeightedJob(8,10,4);
+    WeightedJob j7 = new WeightedJob(9,11,1);
+    
+    List<WeightedJob> jobs = new ArrayList<WeightedJob>(Arrays.asList(j1,j2,j3,j4,j5,j6,j7));
+    
+    WeightedIntervalScheduling wis = new WeightedIntervalScheduling(jobs);
+    
+    int[] table = wis.schedule();
+    
+    System.out.println("Input jobs: " + jobs + "\n");
+    
+    int[] compatible = wis.getCompatible();
+    for(int i = 1; i < table.length; i++) {
+      System.out.println("p(" + i + ") = " + compatible[i] +"\tM[" + i + "] = " + table[i]);
+    }
+    
+    System.out.println("\nThe optimal schedule is: " + wis.findSchedule());
+    System.out.println("The total weight is: " + table[table.length-1]);
     
   }
   
