@@ -7,6 +7,10 @@ import java.util.ArrayList;
 public class GreedyAlgorithms {
 
   public static void main(String[] args) {
+    System.out.println("-----------------");
+    System.out.println("Greedy Algorithms");
+    System.out.println("-----------------\n");
+    
     System.out.println("Interval Scheduling");
     System.out.println("Finding the maximum subset of mutually compatible jobs (not overlapping)");
     System.out.println("Time complexity: O(n log(n))\n");
@@ -23,7 +27,7 @@ public class GreedyAlgorithms {
     System.out.println("Determining the interval schedule to minimize the lateness given a list of tasks taking duration/time t and for deadline d");
     System.out.println("Time complexity: O(n log(n))\n");
     testMinimizingLateness();
-    
+    System.out.println("\n");
   }
   
   public static void testMinimizingLateness() {

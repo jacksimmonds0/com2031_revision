@@ -8,6 +8,10 @@ import java.util.List;
 public class DivideAndConquer {
 
   public static void main(String[] args) {
+    System.out.println("------------------");
+    System.out.println("Divide and Conquer");
+    System.out.println("------------------\n");
+    
     System.out.println("2D Minimum Distance");
     System.out.println("Algorithm to find the minimum distance between two points in a 2-dimensional space");
     System.out.println("Time complexity: O(n log^2(n))\n");
@@ -16,14 +20,15 @@ public class DivideAndConquer {
     
     System.out.println("Merge sort");
     System.out.println("Sorting algorithm by splitting the list in two recursively and sorting each list by merging");
-    System.out.println("Time complexity: O(n log2(n))\n");
+    System.out.println("Time complexity: O(n log(n))\n");
     testMergesort();
     System.out.println("\n");
     
     System.out.println("Counting Inversions");
     System.out.println("An algorithm to count the number of inversions performed in a list to sort using merge sort");
-    System.out.println("Time complexity: O(n log2(n))\n");
+    System.out.println("Time complexity: O(n log(n))\n");
     testCountingInversions();
+    System.out.println("\n");
   }
   
   public static void testCountingInversions() {
