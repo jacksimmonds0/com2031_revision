@@ -3,8 +3,8 @@ package org.com2031.greedy;
 
 public class Job {
 
-  private int startTime = 0;
-  private int endTime = 0;
+  protected int startTime = 0;
+  protected int endTime = 0;
   
   public Job(int startTime, int endTime) {
     super();
